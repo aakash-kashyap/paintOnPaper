@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Paint On Paper</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.4/paper-full.min.js"></script>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/howler.js/2.0.3/howler.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+	
+
+</head>
+<body>
+	<div class = "nav">
+	<h1 align="center">Paint On Paper</h1>
+	<hr>
+	<br>
+
+	<form id="fontForm">
+		<span id="fontSize">Font Size :</span>
+		<label><input type="radio" name="radioName" value="1" checked /> 1 </label>
+		<label><input type="radio" name="radioName" value="2" /> 2 </label>
+		<label><input type="radio" name="radioName" value="4" /> 4 </label>
+		<label><input type="radio" name="radioName" value="8" /> 8 </label>
+		<label><input type="radio" name="radioName" value="10" /> 10 </label>
+	</form> 
+
+	<form id="colorForm">
+		<span id="fontColor">Color :</span>
+		<label><input type="radio" name="radioName" value="black" checked /> Black </label>
+		<label><input type="radio" name="radioName" value="red" /> Red </label>
+		<label><input type="radio" name="radioName" value="green" /> Green </label>
+		<label><input type="radio" name="radioName" value="yellow" /> Yellow </label>
+		<label><input type="radio" name="radioName" value="blue" /> Blue </label>
+	</form>
+<br>
+<br>
+	<div class="undo">Undo</div> 
+	</div>
+
+	
+	<canvas id="myCanvas" resize></canvas>
+
+
+	<script type="text/paperscript"  canvas="myCanvas" >
+		var myPath;
+		var strokes = [];
+
+		var fontSize;
+		var fontColor = "black";
+
+		$('#fontForm input').on('change', function() {
+		    fontSize= $('input[name=radioName]:checked', '#fontForm').val(); 
+		});
+
+		$('#colorForm input').on('change', function() {
+			fontColor= $('input[name=radioName]:checked', '#colorForm').val(); 
+		});
+		
+		$(".undo").click(function(){
+		    undoStroke();
+		});
+
+		function onMouseDown(event) {
+			myPath = new Path();
+			myPath.strokeWidth = fontSize;
+			myPath.strokeColor= fontColor;
+		}
+
+		function onMouseDrag(event) {
+			 myPath.add(event.point);
+			
+		}
+
+		function onMouseUp(event) {
+			strokes.push(myPath);
+		}
+
+		function undoStroke() {
+			strokes.pop().strokeWidth = 0;
+		
+	}
+
+	</script>
+</body>
+</html>

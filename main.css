@@ -1,0 +1,85 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: #070000;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #070000, #4C0001, #070000);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #070000, #4C0001, #070000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	font-family: "Arial Verdana", Sans-serif;
+}
+
+canvas{
+	padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    display: block;
+    width: 80%;
+    height: 50%;
+	background: white;	
+}
+
+.nav{
+	margin: 2em  auto;
+	background: white;
+	width: 80%;
+	height: 200px;
+	border-radius: 1.2em;
+	border: 2px solid yellow;
+}
+
+div form {
+	display: inline;
+}
+
+#fontform{
+	float: left;
+	margin-left: 10px;
+}
+
+#colorForm{
+	float: right;
+	margin-right: 5px; 
+}
+
+#fontSize{
+	padding-left: 10px; 
+	font-weight: 600;
+}
+
+#fontColor{
+	font-weight: 600;	
+}
+form label{
+	background: steelblue;
+	opacity: 0.9;
+	margin-left: 1em;
+	border-radius: 0.9em;
+	padding: 0.2em 0.3em;	
+}
+
+form label:hover{
+	background: blue;
+}
+
+hr{
+	opacity: 0.5;
+	width: 80%;
+	color: blue;
+}
+.undo{
+	background: red;
+	color: white;
+	opacity: 0.9;
+	margin-left: 1em;
+	border-radius: 0.9em;
+	padding: 0.2em 0.3em;
+	width: 3em;
+	text-align: center;
+	float: right;
+	margin-right: 15px; 
+}
+.undo:hover{
+	background: blue;
+}
