@@ -3,7 +3,6 @@
 <head>
 	<title>Paint On Paper</title>
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.4/paper-full.min.js"></script>
@@ -40,6 +39,7 @@
 <br>
 <br>
 	<div class="undo">Undo</div> 
+	<div class="redo">Redo</div> 
 	</div>
 
 	
@@ -49,6 +49,7 @@
 	<script type="text/paperscript"  canvas="myCanvas" >
 		var myPath;
 		var strokes = [];
+		var strokesContainer = [];
 
 		var fontSize;
 		var fontColor = "black";
@@ -63,6 +64,10 @@
 		
 		$(".undo").click(function(){
 		    undoStroke();
+		});
+
+		$(".redo").click(function(){
+		    redoStroke();
 		});
 
 		function onMouseDown(event) {
@@ -81,9 +86,16 @@
 		}
 
 		function undoStroke() {
-			strokes.pop().strokeWidth = 0;
-		
-	}
+			var lastPath  = strokes.pop()
+			strokesContainer.push(lastPath);
+			lastPath.visible = false;	
+		}
+
+		function redoStroke(){
+			var lastPath = strokesContainer.pop();
+			strokes.push(lastPath);
+			lastPath.visible = true;
+		}
 
 	</script>
 </body>
